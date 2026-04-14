@@ -106,6 +106,80 @@
     .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: #fff; }
     .card p { font-size: 0.875rem; color: #888899; line-height: 1.6; }
 
+    /* CONTACT */
+    .contact {
+      padding: 4rem 2rem 5rem;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .contact h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    .contact .section-sub {
+      text-align: center;
+      color: #8888a0;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #b0b0c0;
+    }
+    .form-group input,
+    .form-group textarea {
+      background: #141418;
+      border: 1px solid #1e1e28;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: #e8e8ed;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color .2s;
+      outline: none;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #7c7cff;
+    }
+    .form-group textarea { min-height: 130px; }
+    .form-submit {
+      width: 100%;
+      padding: 0.85rem;
+      background: #7c7cff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .2s, transform .15s;
+    }
+    .form-submit:hover { opacity: 0.85; transform: translateY(-1px); }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 1rem;
+      background: #0f1f1a;
+      border: 1px solid #1a4a35;
+      border-radius: 8px;
+      color: #4ade80;
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
     /* FOOTER */
     footer {
       text-align: center;
@@ -123,7 +197,7 @@
     <ul class="nav-links">
       <li><a href="#features">Features</a></li>
       <li><a href="#">Preise</a></li>
-      <li><a href="#">Kontakt</a></li>
+      <li><a href="#contact">Kontakt</a></li>
     </ul>
   </nav>
 
@@ -135,7 +209,7 @@
       und deine Nutzer zu begeistern.
     </p>
     <div class="cta-group">
-      <a href="#" class="btn btn-primary">Jetzt starten</a>
+      <a href="#contact" class="btn btn-primary">Jetzt starten</a>
       <a href="#features" class="btn btn-secondary">Mehr erfahren</a>
     </div>
   </section>
@@ -163,9 +237,38 @@
     </div>
   </section>
 
+  <section class="contact" id="contact">
+    <h2>Kontakt aufnehmen</h2>
+    <p class="section-sub">Wir melden uns innerhalb von 24 Stunden bei dir.</p>
+    <form id="contactForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Max Mustermann" required />
+      </div>
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input type="email" id="email" name="email" placeholder="max@beispiel.de" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Nachricht</label>
+        <textarea id="message" name="message" placeholder="Wie k&ouml;nnen wir dir helfen?" required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Nachricht senden</button>
+      <div class="form-success" id="formSuccess">&#10003; Nachricht gesendet! Wir melden uns bald.</div>
+    </form>
+  </section>
+
   <footer>
     &copy; 2026 Launchpad. Alle Rechte vorbehalten.
   </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.querySelectorAll('input, textarea, button').forEach(el => el.disabled = true);
+      document.getElementById('formSuccess').style.display = 'block';
+    });
+  </script>
 
 </body>
 </html>
